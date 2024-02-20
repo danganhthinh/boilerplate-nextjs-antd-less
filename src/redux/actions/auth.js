@@ -29,15 +29,16 @@ export const actionLogin = async (payload = {}, next = f => f) => {
 	return {
 		type: SINGLE_API,
 		payload: {
-			url: '/users/login',
+			url: '/auth/sign-in',
 			options: { method: 'POST' },
 			payload,
 			successType: 'LOGIN_SUCCESS',
 			next: async (err, response = {}) => {
 				if (!err) {
+					console.log('response, ', response)
 					AuthStorage.value = {
-						token: response.id,
-						userId: response.userId,
+						token: response.accessToken,
+						userId: response.user._id,
 						role: response.user.role,
 					};
 				}

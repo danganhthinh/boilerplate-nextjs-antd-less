@@ -23,12 +23,13 @@ const defaultProps = {
 
 const UserCard = (props) => {
 	const { data } = props;
+	console.log('dataUser: ', data)
 
 	return (
 		<div className="col-4">
 			<div className={classes.card}>
 				<Avatar
-					src={data.avatar}
+					src='https://cdnphoto.dantri.com.vn/8kOU8sCmD0Q0bbh7kX2I2gBMtok=/zoom/96_96/2023/06/14/nhat-minh-crop-1686734829269.jpeg'
 					fullName={data.name}
 				/>
 				<h2 className="mb-0 mt-2">{data.name}</h2>

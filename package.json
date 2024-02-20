@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "clean": "rimraf .next/ out/",
-    "dev": "NODE_ENV=development env-cmd next",
+    "dev": "set NODE_ENV=development && env-cmd next",
     "export": "NODE_ENV=production env-cmd -f .env.production --fallback --silent next export",
     "build": "NODE_ENV=production env-cmd -f .env.production --fallback --silent next build",
     "build:staging": "NODE_ENV=staging env-cmd -f .env.staging --fallback --silent next build",

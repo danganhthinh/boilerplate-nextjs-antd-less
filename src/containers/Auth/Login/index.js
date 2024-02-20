@@ -46,8 +46,11 @@ const Login = (props) => {
 	const onFinish = async (values) => {
 		try {
 			setLoading(true);
+			console.log('Login___1')
+
 			await dispatch(await actionLogin({
 				...values,
+				role: "Admin",
 			}));
 			Router.push('/');
 		} finally {

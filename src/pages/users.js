@@ -15,22 +15,37 @@ import Users from 'src/containers/UsersList';
 import wrapperStore from 'src/redux';
 
 import { getList } from 'src/redux/actions/users';
+import Pagination from "src/components/Pagination";
 
 export const getServerSideProps = wrapperStore.getServerSideProps((store) => async (context) => {
-	const users = await store.dispatch(await getList());
-
+	const {count, items} = await store.dispatch(await getList());
 	return {
 		props: {
-			userList: users,
+			userList: items,
+			count,
 		},
 	};
 });
 
 const UsersPage = (props) => {
+	const pagination = {
+		page: 1,
+		count: 100,
+		pageSize: 10,
+	}
 	return (
 		<>
 			<Head title="Users" />
 			<Users {...props} />
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'end',
+					gap: '16px',
+				}}
+			>
+				<Pagination {...pagination}/>
+			</div>
 		</>
 	);
 };

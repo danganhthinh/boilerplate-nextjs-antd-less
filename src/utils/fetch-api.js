@@ -39,7 +39,7 @@ const fetchApi = async ({ url, options, payload = {}, dispatch = f => f } = mand
 
 		// set token
 		if (await AuthStorage.token) {
-			opts.headers.Authorization = AuthStorage.token;
+			opts.headers.Authorization =`Bearer ${AuthStorage.token}`;
 		}
 
 		let uri = API_URL + url;
@@ -89,12 +89,12 @@ const fetchApi = async ({ url, options, payload = {}, dispatch = f => f } = mand
 
 		const data = await response.json();
 
-		if (response.status !== 200 || data.statusCode !== 200) {
+		if ((response.status !== 200 || data.statusCode !== 200) && (response.status !== 201 || data.statusCode !== 201)) {
 			throw data;
 		}
 
-		cb(null, data.result || {});
-		return data.result || {};
+		cb(null, data.data || {});
+		return data.data || {};
 	} catch (err) {
 		if (process.env.NODE_ENV === 'development') {
 			console.log('Call API Error: ', err);
