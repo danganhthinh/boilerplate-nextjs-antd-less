@@ -149,7 +149,10 @@ const MainLayout = (props) => {
 					<Footer />
 				</Layout>
 			</Layout>
-			<BackTop />
+			<BackTop style={{
+				right: 30,
+				bottom: 10
+			}}/>
 			<CookieAlert />
 		</>
 	);

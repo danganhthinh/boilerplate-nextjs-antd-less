@@ -23,7 +23,6 @@ const defaultProps = {
 
 const UserCard = (props) => {
 	const { data } = props;
-	console.log('dataUser: ', data)
 
 	return (
 		<div className="col-4">

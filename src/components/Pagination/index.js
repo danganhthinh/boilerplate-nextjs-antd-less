@@ -15,7 +15,7 @@ const defaultProps = {
 };
 
 const Paginations = (props) => {
-	const { page, count, pageSize } = props;
+	const { page, count, pageSize, handleChangePage } = props;
 
 	return (
 		<Pagination
@@ -25,7 +25,7 @@ const Paginations = (props) => {
 			// 	`${total} 件中 ${range[0]}～${range[1]} 件`
 			// }
 			pageSize={pageSize}
-			// onChange={page => handleChangePage(page, pageSize)}
+			onChange={page => handleChangePage(page, pageSize)}
 		/>
 	);
 };

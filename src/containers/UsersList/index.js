@@ -26,7 +26,7 @@ const defaultProps = {
 };
 
 const UsersList = (props) => {
-	const { router, userList = [] } = props;
+	const { router, items = [] } = props;
 
 	// const { query = {} } = router;
 
@@ -84,7 +84,7 @@ const UsersList = (props) => {
 	return (
 		<div className="row">
 			{
-				userList.map((el) => {
+				items.map((el) => {
 					return (
 						<UserCard
 							data={el}

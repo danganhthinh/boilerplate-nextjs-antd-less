@@ -71,12 +71,12 @@ export const getOne = async (payload = {}, next) => {
 };
 
 export const getList = async (payload = {}, next) => {
-	const { filter, firstLoad } = payload;
+	const { filter, firstLoad, page = 1, pageSize = 9 } = payload;
 
 	return {
 		type: SINGLE_API,
 		payload: {
-			url: `/${MODEL_PLURAL}${applyURIFilter(filter)}`,
+			url: `/${MODEL_PLURAL}${applyURIFilter(filter)}?page=${page}&pageSize=${pageSize}`,
 			beforeCallType: firstLoad ? 'GET_' + MODEL_NAME + '_LIST_REQUEST' : '',
 			successType: 'GET_' + MODEL_NAME + '_LIST_SUCCESS',
 			next,
